@@ -3,14 +3,17 @@ const input = document.querySelector('.input-field')
 const btn = document.querySelector('.btn')
 const message = document.querySelector('h3')
 
+//Main function on click
+btn.addEventListener('click', anagramChecker)
+
 //Function that sorts letters in every word in alphabetical order
 function alphabetize(word) {
   return word.split('').sort().join('')
 }
 
-//Main function on click
-btn.addEventListener('click', () => {
-  const str = input.value //assigning user input to a variable
+//Main function that implements all the logic
+function anagramChecker() {
+  const str = input.value //setting user input into a variable
   const words = str.split(' ') //creating an array from input string
   const filtered = [...new Set(words)] //making a set from an array to exclude duplicates ('cause duplicates don't count as an acronym)
 
@@ -22,4 +25,4 @@ btn.addEventListener('click', () => {
   message.innerHTML = `Your sentence has ${count} anagrams!` //changing the message text to display new value
 
   input.value = '' //refreshing the input field
-})
+}
